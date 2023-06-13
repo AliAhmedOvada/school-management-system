@@ -14,23 +14,17 @@ class ClassController extends Controller
     public function index()
     {
 
-        $classes = ClassModel::all();
+        $classes = ClassModel::with('students')->get();
         $lectures = Lecture::get();
-
         foreach ($classes as $class) {
             $user = User::find($class->user_id);
             $class->user = $user;
         }
-
         return view('classes.index', compact('classes', 'lectures'));
     }
     public function create()
     {
-        // $ds = ClassModel::with('students')->find(3);
-        // dd($ds);
-        // $all_users = User::where('id', auth()->id())->where('role_id', 2)->get();
         $all_users = Student::get();
-        // dd($all_students);
         return view('classes.create', compact('all_users'));
     }
 

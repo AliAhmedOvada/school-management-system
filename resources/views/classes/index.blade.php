@@ -28,7 +28,7 @@
                             </a>
                         </td>
 
-                        <td>{{ $class->user->name }}</td>
+                        <td>{{ $class }}</td>
                         <td>
                             <div class="dropdown">
                                 <select name="lecture_ids[]" class="form-control dropdown"
